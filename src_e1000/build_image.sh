@@ -4,6 +4,7 @@ kernel_image="../linux/arch/x86/boot/bzImage"
 work_dir=$PWD
 rootfs="rootfs"
 rootfs_img=$PWD"/rootfs_img"
+hellworld_path="../linux/samples/rust"
 
 make LLVM=1
 echo $base_path
@@ -12,6 +13,7 @@ if [ ! -d $rootfs ]; then
 fi
 cp $busybox_folder/_install/*  $rootfs/ -rf
 cp $work_dir/r4l_e1000_demo.ko $work_dir/$rootfs/
+cp $hellworld_path/rust_helloworld.ko $work_dir/$rootfs/
 cd $rootfs
 if [ ! -d proc ] && [ ! -d sys ] && [ ! -d dev ] && [ ! -d etc/init.d ]; then
     mkdir proc sys dev etc etc/init.d
